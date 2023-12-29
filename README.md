@@ -1,5 +1,12 @@
 # Advent of Code 2023
 
+## Setup Token for Import
+
+1. sign in at https://adventofcode.com
+2. refresh the page and open the developer tools
+3. copy your `session` value from the cookies
+4. export your cookie via terminal `export AOC_SESSION="..."`
+
 ## Importing Task
 
 To get the current days task (only in December)
