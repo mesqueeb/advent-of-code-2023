@@ -22,10 +22,11 @@ try {
 await fs.writeFile(`days/${dayPadded}/data.txt`, input)
 await fs.writeFile(`days/${dayPadded}/README.md`, instructions)
 try {
-  if (!(await fileExists(`days/${dayPadded}/index.swift`))) {
+  if (!(await fileExists(`days/${dayPadded}/part1.swift`))) {
     await fs.writeFile(
-      `days/${dayPadded}/index.swift`,
+      `days/${dayPadded}/part1.swift`,
       `import Foundation
+
 `
     )
   }
