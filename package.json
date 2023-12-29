@@ -1,0 +1,9 @@
+{
+  "name": "advent-of-code-2023",
+  "module": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "jsdom": "^23.0.1",
+    "node-fetch": "^3.3.2"
+  }
+}
