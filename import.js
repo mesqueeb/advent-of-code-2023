@@ -14,18 +14,37 @@ const [{ instructions, examples }, input] = await Promise.all([getInstructions()
 console.log(`instructions → `, instructions)
 
 try {
-  await fs.mkdir(`days/${dayPadded}/`, { recursive: true })
+  await fs.mkdir(`Sources/Days/${dayPadded}/Part1/`, { recursive: true })
+  await fs.mkdir(`Sources/Days/${dayPadded}/Part2/`, { recursive: true })
 } catch (e) {
   console.log(e)
 }
 
-await fs.writeFile(`days/${dayPadded}/data.txt`, input)
-await fs.writeFile(`days/${dayPadded}/README.md`, instructions)
+await fs.writeFile(`Sources/Days/${dayPadded}/data.txt`, input)
+await fs.writeFile(`Sources/Days/${dayPadded}/README.md`, instructions)
 try {
-  if (!(await fileExists(`days/${dayPadded}/part1.swift`))) {
+  if (!(await fileExists(`Sources/Days/${dayPadded}/Part1/main.swift`))) {
     await fs.writeFile(
-      `days/${dayPadded}/part1.swift`,
+      `Sources/Days/${dayPadded}/Part1/main.swift`,
       `import Foundation
+import Utils
+
+let data = readFile(filePath: "../data.txt")
+
+print(data)
+
+`
+    )
+  }
+  if (!(await fileExists(`Sources/Days/${dayPadded}/Part2/main.swift`))) {
+    await fs.writeFile(
+      `Sources/Days/${dayPadded}/Part2/main.swift`,
+      `import Foundation
+import Utils
+
+let data = readFile(filePath: "../data.txt")
+
+print(data)
 
 `
     )
@@ -33,7 +52,9 @@ try {
 } catch {}
 
 await Promise.all(
-  examples.map((example, idx) => fs.writeFile(`days/${dayPadded}/ex${idx + 1}.txt`, example))
+  examples.map((example, idx) =>
+    fs.writeFile(`Sources/Days/${dayPadded}/ex${idx + 1}.txt`, example)
+  )
 )
 
 console.log(`Files written`)

@@ -28,7 +28,7 @@ node import.ts 1 # downloads day 1
 Nothing fancy, to run day 1 do:
 
 ```sh
-swift days/01/index.swift
+swift run Day01Part1
 ```
 
 Extrapolate for other days
