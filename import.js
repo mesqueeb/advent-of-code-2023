@@ -23,10 +23,7 @@ try {
 await fs.writeFile(`Sources/Days/${dayPadded}/data.txt`, input)
 await fs.writeFile(`Sources/Days/${dayPadded}/README.md`, instructions)
 try {
-  if (!(await fileExists(`Sources/Days/${dayPadded}/Part1/main.swift`))) {
-    await fs.writeFile(
-      `Sources/Days/${dayPadded}/Part1/main.swift`,
-      `import Foundation
+  const template = `import Foundation
 import Utils
 
 let startTime = Date()
@@ -42,20 +39,11 @@ let timeInterval = endTime.timeIntervalSince(startTime)
 
 print("Time taken: \(timeInterval) seconds")
 `
-    )
+  if (!(await fileExists(`Sources/Days/${dayPadded}/Part1/main.swift`))) {
+    await fs.writeFile(`Sources/Days/${dayPadded}/Part1/main.swift`, template)
   }
   if (!(await fileExists(`Sources/Days/${dayPadded}/Part2/main.swift`))) {
-    await fs.writeFile(
-      `Sources/Days/${dayPadded}/Part2/main.swift`,
-      `import Foundation
-import Utils
-
-let data = readFile(filePath: "../data.txt")
-
-print(data)
-
-`
-    )
+    await fs.writeFile(`Sources/Days/${dayPadded}/Part2/main.swift`, template)
   }
 } catch {}
 
